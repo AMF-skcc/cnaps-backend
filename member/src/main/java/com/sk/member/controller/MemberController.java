@@ -1,5 +1,7 @@
 package com.sk.member.controller;
 
+import com.sk.member.app.exception.ApiException;
+import com.sk.member.app.response.ApiStatus;
 import com.sk.member.dto.MemberDto;
 import com.sk.member.model.Member;
 import com.sk.member.service.MemberService;
@@ -46,7 +48,7 @@ public class MemberController {
     public ResponseEntity<Member> getMemberByEmail(@PathVariable String email) {
         Member member = memberService.findByEmail(email);
         if (member == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            throw new ApiException(ApiStatus.NO_SUCH_MEMBER);
         }
         return ResponseEntity.status(HttpStatus.OK).body(member);
     }
@@ -82,7 +84,7 @@ public class MemberController {
         // 로그인 처리 - 로그인 실패 시, 401 오류로 처리할 수도 있음.
         boolean success = member.login(email, password);
         if (!success) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
+            throw new ApiException(ApiStatus.LOGIN_FAILED);
         }
 
         return ResponseEntity.status(HttpStatus.OK).header("CNAPS_ROLE", member.getRole()).body(true);
