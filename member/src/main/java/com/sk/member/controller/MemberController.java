@@ -29,7 +29,7 @@ public class MemberController {
         String username = memberDto.getUsername();
         String nickname = memberDto.getNickname();
         String email = memberDto.getEmail();
-        String role = memberDto.getRole();
+        String role = "-"; // 생성시 default Role
         String password = memberDto.getPassword();
 
         Member createdMember = memberService.createMember(username, nickname, email, role, password);
