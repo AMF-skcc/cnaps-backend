@@ -1,4 +1,4 @@
-package com.sk.member.model;
+package com.sk.member.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
@@ -15,6 +15,7 @@ import java.time.Instant;
 /**
  * Base abstract class for entities which will hold definitions for created, last modified, created by,
  * last modified by attributes.
+ * This file will be used after jwt token applied.
  */
 @Getter
 @Setter

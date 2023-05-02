@@ -1,9 +1,11 @@
 package com.sk.member.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 public class BookController {
 //
 //    // TODO 생성자 주입으로 전체 변경
